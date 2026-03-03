@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ReduxProvider } from '@/components/providers/redux-provider'
 import { AuthInitializer } from '@/components/providers/auth-initializer'
@@ -12,7 +11,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'Budget Tracker - Smart Personal Finance Management',
   description: 'Track your spending, manage budgets, and gain AI-powered insights into your finances',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -47,7 +45,6 @@ export default function RootLayout({
             </ThemeProvider>
           </AuthInitializer>
         </ReduxProvider>
-        <Analytics />
       </body>
     </html>
   )

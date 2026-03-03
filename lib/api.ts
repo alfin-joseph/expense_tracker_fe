@@ -103,6 +103,15 @@ export interface AnalyticsOverview {
   category_distribution: AnalyticsCategoryDistribution[];
 }
 
+export interface AiSummaryResponse {
+  month: number;
+  year: number;
+  summary: string;
+  risk_level: string;
+  recommendations: string[];
+  potential_savings: string;
+}
+
 export interface PaginatedResponse<T> {
   count: number;
   next: string | null;
@@ -325,6 +334,28 @@ class APIClient {
       },
     });
 
+    throw lastError;
+  }
+
+  // AI Summary endpoint
+  public async getAiSummary(month?: number, year?: number): Promise<AiSummaryResponse> {
+    const params: Record<string, any> = {};
+    if (month) params.month = month;
+    if (year) params.year = year;
+
+    const endpoints = ['/api/analytics/ai-summary/', '/analytics/ai-summary/', '/api/ai-summary/', '/ai-summary/'];
+    let lastError: any = null;
+
+    for (const endpoint of endpoints) {
+      try {
+        const response = await this.client.get<AiSummaryResponse>(endpoint, { params });
+        return response.data;
+      } catch (error: any) {
+        lastError = error;
+      }
+    }
+
+    console.error('AI summary endpoints all failed', { baseURL: this.client.defaults.baseURL, lastError });
     throw lastError;
   }
 }
