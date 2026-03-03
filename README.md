@@ -31,7 +31,7 @@ Backend → Django REST API (Render)
 Database → PostgreSQL
 
 🔗 Backend Repository:
-https://expense-tracker-be-pomq.onrender.com/
+https://github.com/alfin-joseph/expense_tracker_be.git
 
 ---
 
@@ -67,9 +67,12 @@ NEXT_PUBLIC_API_URL=https://expense-tracker-be-pomq.onrender.com/
 
 ## 🚀 Run Locally
 
-git clone https://github.com/your-username/frontend-repo.git
-cd frontend-repo
+git clone https://github.com/alfin-joseph/expense_tracker_fe 
+
+cd expense_tracker_fe
+
 npm install
+
 npm run dev
 
 ---
